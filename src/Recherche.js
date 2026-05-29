@@ -9,6 +9,9 @@ placeholder="Rechercher une ligne (depart, arrivee)..."
 value={valeur}
 onChange={e => onChange(e.target.value)}
 />
+<button className="recherche-bouton" onClick={() => onChange('')}>
+Effacer
+</button>
 </div>
 );
 }
