@@ -9,6 +9,10 @@ CORS(app)
 with open("lignes_ddd.json", "r", encoding="utf-8") as f:
     lignes = json.load(f)
 
+with open("arrets.json", "r", encoding="utf-8") as f:
+    arrets = json.load(f)
+
+
 @app.route("/")
 def accueil():
     return jsonify({
@@ -30,6 +34,11 @@ def get_ligne(ligne_id):
         return jsonify({"erreur": "Ligne non trouvée"}), 404
     return jsonify(ligne)
 
+@app.route("/arrets")
+def get_arrets():
+    return jsonify(arrets)
+
+
 if __name__ == "__main__":
     app.run(debug=True, port=5000)
 
@@ -38,3 +47,4 @@ def debug():
     if lignes:
         return jsonify(lignes[0])  # Affiche le premier objet tel quel
     return jsonify({"erreur": "fichier vide"})
+
